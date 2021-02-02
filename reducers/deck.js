@@ -4,7 +4,7 @@ export default function deck(state = {}, action) {
     switch (action.type) {
 
         case RECEIVE_ALL_DECKS:
-            return { ...state, decks };
+            return { ...state, decks: action.decks };
 
         case SAVE_DECK:
             return {

@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-export class DeckPreview extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
-
+class DeckPreview extends Component {
     render() {
         return (
             <View>

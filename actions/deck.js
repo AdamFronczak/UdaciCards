@@ -37,14 +37,14 @@ function saveQuestionAction(title, question, answer) {
 
 export function getAllDecks() {
     return dispatch => {
-        decks = getDecks();
+        const decks = getDecks();
         dispatch(receiveAllDecksAction(decks));
     }
 }
 
 export function getDeckByTitle(title) {
     return dispatch => {
-        deck = getDeck(title);
+        const deck = getDeck(title);
         dispatch(receiveDeckAction(deck));
     }
 }
