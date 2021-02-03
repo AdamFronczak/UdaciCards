@@ -7,13 +7,13 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import DeckList from './components/DeckList';
 import reducers from './reducers/deck'
-import NewDeck from './components/NewDeck';
+import Home from './components/Home';
+import AddCard from './components/AddCard';
+import DeckPreview from './components/DeckPreview';
+import Quiz from './components/Quiz';
 
 const Stack = createStackNavigator();
-const Tab = createMaterialTopTabNavigator();
 
 export default function App() {
     return (
@@ -21,16 +21,24 @@ export default function App() {
             <StatusBar style="auto" />
             <View style={styles.container}>
                 <NavigationContainer>
-                    <Tab.Navigator>
-                        <Tab.Screen
-                            name="DeckList"
-                            component={DeckList}
-                            options= {{title: 'Decks'}} />
-                        <Tab.Screen
-                            name="AddDeck"
-                            component={NewDeck}
-                            options= {{title: 'New Deck'}} />
-                    </Tab.Navigator>
+                    <Stack.Navigator>
+                        <Stack.Screen
+                                name="Home"
+                                component={Home}
+                                options= {{title: 'Home'}} />
+                        <Stack.Screen
+                                name="DeckPreview"
+                                component={DeckPreview}
+                                options= {{title: 'Deck'}} />
+                        <Stack.Screen
+                                name="Quiz"
+                                component={Quiz}
+                                options= {{title: 'Quiz'}} />
+                        <Stack.Screen
+                                name="AddCard"
+                                component={AddCard}
+                                options= {{title: 'AddCard'}} />
+                    </Stack.Navigator>
                 </NavigationContainer>
             </View>
         </Provider>

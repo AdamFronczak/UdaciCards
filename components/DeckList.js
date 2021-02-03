@@ -8,8 +8,9 @@ class DeckList extends Component {
         this.props.getAllDecks();
     }
 
-    deckPressed = () => {
-
+    deckPressed = (title) => {
+        console.log(title);
+        this.props.navigation.navigate('DeckPreview', { deckId: title });
     }
 
     render() {
@@ -18,7 +19,7 @@ class DeckList extends Component {
                 <FlatList data={Object.values(this.props.decks)}
                     keyExtractor={item => item.title}
                     renderItem={({item}) => 
-                        <TouchableHighlight onPress={this.deckPressed}>
+                        <TouchableHighlight onPress={() => this.deckPressed(item.title)}>
                             <View style={{alignItems: "center", padding: 20, borderBottomWidth: 1}}>
                                 <Text style={{color: "blue", margin: 5, fontSize: 30}}>
                                     {item.title}
