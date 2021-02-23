@@ -4,24 +4,19 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux'
 
 class Card extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { isQuestion: true };
-    }
-
     render() {
         return (
             <View>
-                { isQuestion 
+                { this.props.isQuestion 
                 ?
                 <View>
                     <Text>{this.props.question}</Text>
-                    <TouchableOpacity onPress={this.setState({isQuestion: false})}>Answer</TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.setIsQuestion(false)}><Text>Answer</Text></TouchableOpacity>
                 </View>
                 :
                 <View>
                     <Text>{this.props.answer}</Text>
-                    <TouchableOpacity onPress={this.setState({isQuestion: true})}>Question</TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.setIsQuestion(true)}><Text>Question</Text></TouchableOpacity>
                 </View>
                 }
             </View>

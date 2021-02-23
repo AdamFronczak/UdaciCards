@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 
 class DeckPreview extends Component {
     addCard = () => {
-
+        this.props.navigation.navigate('AddCard', { deckId: this.props.deck.title });
     }
 
     startQuiz = () => {
-
+        this.props.navigation.navigate('Quiz', { deckId: this.props.deck.title });
     }
 
     render() {
@@ -16,8 +16,8 @@ class DeckPreview extends Component {
             <View>
                 <Text>{this.props.deck.title}</Text>
                 <Text>{this.props.deck.questions.length} {this.props.deck.questions.length === 1 ? "card" : "cards"}</Text>
-                <Button onPress={this.addCard}>Add Card</Button>
-                <Button onPress={this.startQuiz}>Start Quiz</Button>
+                <Button onPress={this.addCard} title="Add Card" />
+                <Button onPress={this.startQuiz} title="Start Quiz" />
             </View>
         )
     }

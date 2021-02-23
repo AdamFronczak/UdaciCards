@@ -7,20 +7,21 @@ export default function deck(state = {}, action) {
             return { ...state, decks: action.decks };
 
         case SAVE_DECK:
-            return {
-                ...state,
-                [action.title]: {
-                    title: title,
-                    questions: []
-                }
-            }
+            var deck = { title: action.title, questions: []};
+            var decks = { ...state.decks };
+            decks[action.title] = deck;
+
+            return { ...state, decks }
 
         case SAVE_QUESTION:
-            var deck = state[action.title];
-            deck = {...deck};
+            var deck = state.decks[action.title];
+            deck = { ...deck };
             deck.questions = deck.questions.concat({question: action.question, answer: action.answer});
-            
-            return { ...state, [action.title]: deck };
+
+            var decks = { ...state.decks };
+            decks[action.title] = deck;
+
+            return { ...state, decks };
 
         default:
             return state;

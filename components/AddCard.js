@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, Button } from 'react-native'
 import { connect } from 'react-redux'
-import { addCardToDeck } from '../actions/deck'
+import { saveQuestion } from '../actions/deck'
 
 class AddCard extends Component {
     state = { question: '', answer: '' }
 
     submitDeck = () => {
         if (this.state.question && this.state.answer) {
-            addCardToDeck(this.props.deckId, this.state.question, this.state.answer);
-            // nav out
+            this.props.saveQuestion(this.props.route.params.deckId, this.state.question, this.state.answer);
+            this.setState({ question: '', answer: '' });
         }
     }
 
@@ -22,17 +22,17 @@ class AddCard extends Component {
                 <Text>Answer:</Text>
                 <TextInput onChangeText={text => this.setState({answer: text})}
                     value={this.state.answer} />
-                <Button onPress={this.submitDeck}>Submit</Button>
+                <Button onPress={this.submitDeck} title="Submit" />
             </View>
         )
     }}
 
 const mapStateToProps = (state) => ({
-    
+
 })
 
 const mapDispatchToProps = {
-    addCardToDeck
+    saveQuestion
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCard)

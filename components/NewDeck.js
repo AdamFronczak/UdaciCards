@@ -8,8 +8,9 @@ class NewDeck extends Component {
 
     submitDeck = () => {
         if (this.state.title) {
-            saveNewDeck(this.state.title);
-            // nav out
+            this.props.saveNewDeck(this.state.title);
+            this.setState({title: ''});
+            this.props.navigation.goBack();
         }
     }
 
@@ -19,7 +20,7 @@ class NewDeck extends Component {
                 <Text>What is the title of your new deck?</Text>
                 <TextInput onChangeText={text => this.setState({title: text})}
                     value={this.state.title} />
-                <Button onPress={this.submitDeck}>Submit</Button>
+                <Button onPress={this.submitDeck} title="Submit" />
             </View>
         )
     }

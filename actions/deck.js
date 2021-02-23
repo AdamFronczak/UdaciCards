@@ -58,7 +58,7 @@ export function saveNewDeck(title) {
 
 export function saveQuestion(title, question, answer) {
     return dispatch => {
-        addCardToDeck(title);
+        addCardToDeck(title, question, answer);
         dispatch(saveQuestionAction(title, question, answer));
     }
 }
