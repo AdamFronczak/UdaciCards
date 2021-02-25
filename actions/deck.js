@@ -1,7 +1,6 @@
-import { getDecks, getDeck, addCardToDeck, saveDeckTitle } from "../Database/DeckStorage"
+import { getDecks, addCardToDeck, saveDeckTitle } from "../Database/DeckStorage"
 
 export const RECEIVE_ALL_DECKS = 'RECEIVE_ALL_DECKS'
-export const RECEIVE_DECK = 'RECEIVE_DECK'
 export const SAVE_DECK = 'SAVE_DECK'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
 
@@ -9,13 +8,6 @@ function receiveAllDecksAction(decks) {
     return {
         type: RECEIVE_ALL_DECKS,
         decks: decks
-    }
-}
-
-function receiveDeckAction(deck) {
-    return {
-        type: RECEIVE_DECK,
-        deck: deck
     }
 }
 
@@ -37,15 +29,8 @@ function saveQuestionAction(title, question, answer) {
 
 export function getAllDecks() {
     return dispatch => {
-        const decks = getDecks();
-        dispatch(receiveAllDecksAction(decks));
-    }
-}
-
-export function getDeckByTitle(title) {
-    return dispatch => {
-        const deck = getDeck(title);
-        dispatch(receiveDeckAction(deck));
+        getDecks()
+            .then(decks => dispatch(receiveAllDecksAction(decks)));
     }
 }
 

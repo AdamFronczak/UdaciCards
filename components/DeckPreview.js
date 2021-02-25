@@ -17,7 +17,7 @@ class DeckPreview extends Component {
                 <Text>{this.props.deck.title}</Text>
                 <Text>{this.props.deck.questions.length} {this.props.deck.questions.length === 1 ? "card" : "cards"}</Text>
                 <Button onPress={this.addCard} title="Add Card" />
-                <Button onPress={this.startQuiz} title="Start Quiz" />
+                <Button onPress={this.startQuiz} disabled={this.props.deck.questions.length === 0} title="Start Quiz" />
             </View>
         )
     }

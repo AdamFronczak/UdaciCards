@@ -1,40 +1,21 @@
-const decks = {
-    React: {
-        title: 'React',
-        questions: [
-            {
-                question: 'What is React?',
-                answer: 'A library for managing user interfaces'
-            },
-            {
-                question: 'Where do you make Ajax requests in React?',
-                answer: 'The componentDidMount lifecycle event'
-            }
-        ]
-    },
-    JavaScript: {
-        title: 'JavaScript',
-        questions: [
-            {
-                question: 'What is a closure?',
-                answer: 'The combination of a function and the lexical environment within which that function was declared.'
-            }
-        ]
-    }
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+export async function getDecks() {
+    //AsyncStorage.removeItem('decks');
+    const jsonDecks = await AsyncStorage.getItem('decks');
+    return jsonDecks != null ? JSON.parse(jsonDecks) : {};
 }
 
-export function getDecks() {
-    return decks;
-}
+export async function saveDeckTitle(title) {
+    const decks = await getDecks();
 
-export function getDeck(id) {
-    return decks[id];
-}
-
-export function saveDeckTitle(title) {
     decks[title] = { title: title, questions: [] };
+    AsyncStorage.setItem('decks', JSON.stringify(decks));
 }
 
-export function addCardToDeck(title, question, answer) {
-    decks[title].questions.concat({question: question, answer: answer});
+export async function addCardToDeck(title, question, answer) {
+    const decks = await getDecks();
+
+    decks[title].questions = decks[title].questions.concat({question: question, answer: answer});
+    AsyncStorage.setItem('decks', JSON.stringify(decks));
 }

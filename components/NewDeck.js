@@ -20,7 +20,7 @@ class NewDeck extends Component {
                 <Text>What is the title of your new deck?</Text>
                 <TextInput onChangeText={text => this.setState({title: text})}
                     value={this.state.title} />
-                <Button onPress={this.submitDeck} title="Submit" />
+                <Button onPress={this.submitDeck} title="Create Deck" />
             </View>
         )
     }
