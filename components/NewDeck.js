@@ -17,10 +17,11 @@ class NewDeck extends Component {
     render() {
         return (
             <View>
-                <Text>What is the title of your new deck?</Text>
+                <Text style={{margin: 5}}>What is the title of your new deck?</Text>
                 <TextInput onChangeText={text => this.setState({title: text})}
-                    value={this.state.title} />
-                <Button onPress={this.submitDeck} title="Create Deck" />
+                    value={this.state.title}
+                    style={{padding: 3, margin: 5, borderWidth: 1}} />
+                <Button onPress={this.submitDeck} title="Create Deck" color="green" />
             </View>
         )
     }

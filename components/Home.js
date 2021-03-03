@@ -10,7 +10,7 @@ const Tab = createMaterialTopTabNavigator();
 class Home extends Component {
     render() {
         return (
-            <View>
+            <View style={{ flex: 1}}>
                 <Tab.Navigator>
                     <Tab.Screen
                         name="DeckList"

@@ -6,10 +6,12 @@ class Score extends Component {
     render() {
         return (
             <View>
-                <Text>{this.props.total} / {this.props.total}</Text>
-                <Text>{Math.round(this.props.correct / this.props.total * 100)} % Correct</Text>
+                <Text style={{margin: 5}}>{this.props.total} / {this.props.total}</Text>
+                <Text style={{fontSize: 20, textAlign: "center", marginBottom: 20}}>{Math.round(this.props.correct / this.props.total * 100)} % Correct</Text>
 
-                <Button onPress={this.props.onRestart} title="Restart Quiz" />
+                <View style={{marginBottom: 10}}>
+                    <Button onPress={this.props.onRestart} title="Restart Quiz" color="green" />
+                </View>
                 <Button onPress={this.props.onFinish} title="Back to Deck" />
             </View>
         )

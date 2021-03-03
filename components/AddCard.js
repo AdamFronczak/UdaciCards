@@ -16,13 +16,15 @@ class AddCard extends Component {
     render() {
         return (
             <View>
-                <Text>Question:</Text>
+                <Text style={{margin: 5}}>Question:</Text>
                 <TextInput onChangeText={text => this.setState({question: text})}
-                    value={this.state.question} />
-                <Text>Answer:</Text>
+                    value={this.state.question}
+                    style={{padding: 3, margin: 5, borderWidth: 1}}  />
+                <Text style={{margin: 5}}>Answer:</Text>
                 <TextInput onChangeText={text => this.setState({answer: text})}
-                    value={this.state.answer} />
-                <Button onPress={this.submitDeck} title="Submit" />
+                    value={this.state.answer}
+                    style={{padding: 3, margin: 5, borderWidth: 1}}  />
+                <Button onPress={this.submitDeck} title="Submit" color="green" />
             </View>
         )
     }}

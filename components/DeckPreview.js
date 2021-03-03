@@ -14,9 +14,11 @@ class DeckPreview extends Component {
     render() {
         return (
             <View>
-                <Text>{this.props.deck.title}</Text>
-                <Text>{this.props.deck.questions.length} {this.props.deck.questions.length === 1 ? "card" : "cards"}</Text>
-                <Button onPress={this.addCard} title="Add Card" />
+                <Text style={{fontSize: 40, textAlign: "center", margin: 10}}>{this.props.deck.title}</Text>
+                <Text style={{textAlign: "center", margin: 10}}>{this.props.deck.questions.length} {this.props.deck.questions.length === 1 ? "card" : "cards"}</Text>
+                <View style={{marginBottom: 10}}>
+                    <Button onPress={this.addCard} title="Add Card" color="green" />
+                </View>
                 <Button onPress={this.startQuiz} disabled={this.props.deck.questions.length === 0} title="Start Quiz" />
             </View>
         )

@@ -3,6 +3,7 @@ import { View, Text, Button } from 'react-native'
 import { connect } from 'react-redux'
 import Card from './Card'
 import Score from './Score'
+import { recreateNotification } from '../services/notifications'
 
 class Quiz extends Component {
     constructor(props) {
@@ -21,6 +22,10 @@ class Quiz extends Component {
     }
 
     advanceQuiz = () => {
+        if (this.state.questionIndex + 1 >= this.props.deck.questions.length) {
+            recreateNotification();
+        }
+
         this.setState(state => ({ questionIndex: state.questionIndex + 1, isQuestion: true }));
     }
 
@@ -42,13 +47,15 @@ class Quiz extends Component {
             this.state.questionIndex <  this.props.deck.questions.length
             ?
             <View>
-                <Text>{this.state.questionIndex + 1} / {this.props.deck.questions.length}</Text>
+                <Text style={{margin: 5}}>{this.state.questionIndex + 1} / {this.props.deck.questions.length}</Text>
                 <Card question={this.props.deck.questions[this.state.questionIndex].question}
                     answer={this.props.deck.questions[this.state.questionIndex].answer}
                     isQuestion={this.state.isQuestion}
                     setIsQuestion={this.setIsQuestion} />
-                <Button onPress={this.answerCorrect} title="Correct" />
-                <Button onPress={this.answerInCorrect} title="Incorrect" />
+                <View style={{marginBottom: 10}}>
+                    <Button onPress={this.answerCorrect} title="Correct" color="green" />
+                </View>
+                <Button onPress={this.answerInCorrect} title="Incorrect" color="red" />
             </View>
             :
             <Score correct={this.state.correct} total={this.props.deck.questions.length} onRestart={this.restartQuiz} onFinish={this.props.navigation.goBack} />
