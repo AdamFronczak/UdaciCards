@@ -11,12 +11,12 @@ class Card extends Component {
                 ?
                 <View>
                     <Text style={styles.text}>{this.props.question}</Text>
-                    <TouchableOpacity style={styles.button} onPress={() => this.props.setIsQuestion(false)}><Text style={{color: "#777777"}}>(Answer)</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.setIsQuestion(false)}><Text style={{color: "#777777"}}>(Show answer)</Text></TouchableOpacity>
                 </View>
                 :
                 <View>
                     <Text style={styles.text}>{this.props.answer}</Text>
-                    <TouchableOpacity style={styles.button} onPress={() => this.props.setIsQuestion(true)}><Text style={{color: "#777777"}}>(Question)</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.setIsQuestion(true)}><Text style={{color: "#777777"}}>(Show question)</Text></TouchableOpacity>
                 </View>
                 }
             </View>
